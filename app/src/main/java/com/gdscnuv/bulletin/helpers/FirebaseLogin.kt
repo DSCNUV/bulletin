@@ -59,10 +59,10 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
         return activity.localClassName
     }
     fun checkLoggedIn():Boolean {
-        var loggedIn: Boolean = true
+        var loggedIn: Boolean = false
 //        firebaseUser = FirebaseAuth.getInstance().currentUser!!
         if(FirebaseAuth.getInstance().currentUser != null){
-            loggedIn = false
+            loggedIn = true
         }
         return loggedIn
     }

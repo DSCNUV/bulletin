@@ -53,9 +53,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        var inst = true
-        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
-        if(inst) {
+//        var inst = true
+//        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
+        var checkLogin = inst.checkLoggedIn()
+        Log.v("STATE: ", checkLogin.toString())
+        var state = inst.checkState()
+        Log.e("###########","edhar tak aaya "+inst.toString());
+        if(state) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
