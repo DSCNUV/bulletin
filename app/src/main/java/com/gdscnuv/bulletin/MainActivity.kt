@@ -6,11 +6,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 
 import android.content.Intent
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import com.gdscnuv.bulletin.activities.HomeActivity
 import com.gdscnuv.bulletin.databinding.ActivityMainBinding
+import com.gdscnuv.bulletin.helpers.FirebaseLogin
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var googleSignInClient: GoogleSignInClient
     lateinit var firebaseAuth: FirebaseAuth
-    lateinit var inst:FirebaseLogin
+    lateinit var inst: FirebaseLogin
 
     //const
     private companion object{
@@ -46,6 +51,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        var inst = true
+        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
+        if(inst) {
+            Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
+            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+        }
+        Log.d("THIS HAS BEEN", "RESUMED")
+    }
+
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -62,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(TAG, "firebaseAuthWithGoogle:" + account.id)
-                var go:Boolean = inst.firebaseAuthWithGoogle(account.idToken!!, this@MainActivity, ProfileActivity::class.java )
+                var go:Boolean = inst.firebaseAuthWithGoogle(account.idToken!!, this@MainActivity, HomeActivity::class.java )
                 Log.d(TAG, "Do we intent ${go.toString()}")
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
@@ -70,5 +86,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }
