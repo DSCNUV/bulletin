@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Bulletin</string>
     <string name="welcome_to_bulletin">Welcome to Bulletin!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_fragment_fragment">Hello homeeeeeeeeeeeeeeee fragment</string>
 </resources>
