@@ -18,7 +18,7 @@ class ProfileActivity : AppCompatActivity() {
             Firebase.auth.signOut()
             startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
         })
-        val inst = firebaseAuth(this@ProfileActivity, "asd").checkState()
+        val inst = FirebaseLogin(this@ProfileActivity, "asd").checkState()
         if(inst) startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
         Log.d("WE NEED ACTIVITY: ", inst.toString())
     }
@@ -26,7 +26,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         var inst = false
-        inst = firebaseAuth(this@ProfileActivity, "asd").checkState()
+        inst = FirebaseLogin(this@ProfileActivity, "asd").checkState()
         if(inst) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
@@ -35,7 +35,7 @@ class ProfileActivity : AppCompatActivity() {
     }
 
 //    private fun checkUser() {
-//        val firebaseUser = MainActivity().firebaseAuth.currentUser
+//        val firebaseUser = MainActivity().FirebaseLogin.currentUser
 //        if(firebaseUser == null) {
 //            startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
 //            finish()
