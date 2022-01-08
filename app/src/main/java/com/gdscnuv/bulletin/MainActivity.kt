@@ -2,6 +2,7 @@ package com.gdscnuv.bulletin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gdscnuv.bulletin.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
