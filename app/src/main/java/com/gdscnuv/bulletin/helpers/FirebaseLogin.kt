@@ -1,18 +1,14 @@
-package com.gdscnuv.bulletin
+package com.gdscnuv.bulletin.helpers
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.util.Log
-import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlin.reflect.KClass
 
 
 class FirebaseLogin(private var activity: Activity, private val s:String) {
@@ -43,11 +39,11 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
         var month = when(activity.localClassName){
             "MainActivity"-> {
                 if(!loggedIn) {
-                    return true
+                    return false
                 }
-                else false
+                else true
             }
-            "ProfileActivity" -> {
+            "HomeActivity" -> {
                 if(loggedIn) {
                     return false
                 }
@@ -75,7 +71,8 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
         var go:Boolean = true
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         firebaseAuth = firebaseInstance()
-        Log.e(TAG, firebaseAuth.signInWithCredential(credential)
+        Log.e(
+            TAG, firebaseAuth.signInWithCredential(credential)
             .isSuccessful.toString())
        firebaseAuth.signInWithCredential(credential)
 //            .isSuccessful

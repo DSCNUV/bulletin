@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.gdscnuv.bulletin.helpers.FirebaseLogin
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
