@@ -11,9 +11,12 @@ import android.view.MenuItem
 import com.gdscnuv.bulletin.activities.HomeActivity
 import com.gdscnuv.bulletin.databinding.ActivityMainBinding
 import com.gdscnuv.bulletin.helpers.FirebaseLogin
+import com.gdscnuv.bulletin.helpers.StoreData
+import com.gdscnuv.bulletin.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -47,8 +50,20 @@ class MainActivity : AppCompatActivity() {
         // Google SignIn button
         binding.signInButton.setOnClickListener{
             Log.d(TAG, "Begin Google Sign In")
-            signIn()
+            signIn().also {
+                Log.v(TAG, "Signed In now saving :D")
+                userStoreSetup()
+            }
+//            userStoreSetup()
         }
+    }
+
+    private fun userStoreSetup(){
+        val photoURL = "https://static.vecteezy.com/system/resources/previews/002/746/072/non_2x/political-elite-flat-color-icon-public-demonstration-speaker-from-government-high-status-of-influence-person-avatar-cartoon-style-clip-art-for-mobile-app-isolated-rgb-illustration-vector.jpg"
+        val u:FirebaseUser = firebaseAuth.currentUser!!
+        val user = User(u.uid, u.displayName!!, u.email.toString() ,photoURL, 10, 5, 2001).getUser()
+        StoreData().saveNew(user)
+        Log.e(TAG, "USER STORED SUCCESSFULLY")
     }
 
     override fun onResume() {
@@ -56,9 +71,8 @@ class MainActivity : AppCompatActivity() {
 //        var inst = true
 //        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
         var checkLogin = inst.checkLoggedIn()
-        Log.v("STATE: ", checkLogin.toString())
+        Log.v("Main Activity STATE: ", checkLogin.toString())
         var state = inst.checkState()
-        Log.e("###########","edhar tak aaya "+inst.toString());
         if(state) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
