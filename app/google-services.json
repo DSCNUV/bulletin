@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "880489988630",
+    "project_id": "bulletin-cd9e5",
+    "storage_bucket": "bulletin-cd9e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880489988630:android:8d749e20508b43fbd0eb37",
+        "android_client_info": {
+          "package_name": "com.gdscnuv.bulletin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880489988630-84pgg2bpr7s3s7aid372e8kggm70qj6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3IgjDaFU0FHtuvdB2kjwQFYTQUtQiOM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880489988630-84pgg2bpr7s3s7aid372e8kggm70qj6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

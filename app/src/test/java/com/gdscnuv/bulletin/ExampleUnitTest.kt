@@ -1,4 +1,4 @@
-package com.nuv.bulletin
+package com.gdscnuv.bulletin
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.nuv.bulletin
+package com.gdscnuv.bulletin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
