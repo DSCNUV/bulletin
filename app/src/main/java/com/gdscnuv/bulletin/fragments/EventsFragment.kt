@@ -17,12 +17,15 @@ import com.gdscnuv.bulletin.helpers.SpotDiffCallback
 import com.gdscnuv.bulletin.helpers.StoreData
 import com.gdscnuv.bulletin.models.Event
 import com.yuyakaido.android.cardstackview.*
+import java.util.concurrent.TimeUnit
 
 class EventsFragment : Fragment(), CardStackListener {
     private lateinit var cardStackView:CardStackView
     private lateinit var manager:CardStackLayoutManager
     private lateinit var adapter:CardStackAdapter
     private lateinit var events:ArrayList<Event>
+    val x = StoreData()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,15 +53,22 @@ class EventsFragment : Fragment(), CardStackListener {
             }
             else if(direction.name == "Right"){
                 paginate()
+//                manager.topPosition = manager.
             }
         }
         else{
-        if(direction.name == "Right"){
-            StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
-            Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
-        }
-        else if(direction.name == "Left") {
-        }
+            if(direction.name == "Right"){
+                StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
+                Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
+            }
+            else if(direction.name == "Left") {
+
+                x.getUser_()
+//                x.getUser__()
+                TimeUnit.SECONDS.sleep(5L)
+                val y = x.getUser___()
+                Log.i(TAG, y.toString())
+            }
         }
     }
 
