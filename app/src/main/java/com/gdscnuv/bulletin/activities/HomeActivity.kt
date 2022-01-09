@@ -1,10 +1,12 @@
 package com.gdscnuv.bulletin.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.gdscnuv.bulletin.MainActivity
@@ -21,7 +23,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         setBottomNav()
-
+        val toolbar:androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar)
+        toolbar.setTitleTextColor(Color.WHITE)
         val inst = FirebaseLogin(this@HomeActivity, "asd").checkState()
         if(inst) startActivity(Intent(this@HomeActivity, MainActivity::class.java))
     }
@@ -33,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
         var checkLogin = inst.checkLoggedIn()
         Log.v("HOME STATE: ", checkLogin.toString())
         var state = inst.checkState()
-        Log.e("###########","edhar tak aaya "+inst.toString());
+        Log.e("###########", "edhar tak aaya " + inst.toString());
         if(!checkLogin) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))
