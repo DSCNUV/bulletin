@@ -60,8 +60,4 @@ dependencies {
 
     //bottom nav library
     implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
-
-    //calender library
-    implementation 'sun.bob:mcalendarview:1.0.0'
-    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
 }
