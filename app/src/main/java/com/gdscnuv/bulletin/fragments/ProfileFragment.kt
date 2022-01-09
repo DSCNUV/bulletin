@@ -15,7 +15,6 @@ import androidx.fragment.app.Fragment
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.adapters.CalenderCardListAdapter
 import com.gdscnuv.bulletin.models.Event
-import com.gdscnuv.bulletin.models.RegisteredEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
