@@ -45,35 +45,23 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = inst.enablegso()
 
         firebaseAuth = inst.firebaseInstance()
-        inst.checkState()
+        if(inst.checkLoggedIn()){
+            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+        }
 
         // Google SignIn button
         binding.signInButton.setOnClickListener{
             Log.d(TAG, "Begin Google Sign In")
-            signIn().also {
-                Log.v(TAG, "Signed In now saving :D")
-                userStoreSetup()
-            }
-//            userStoreSetup()
+            signIn()
         }
-    }
-
-    private fun userStoreSetup(){
-        val photoURL = "https://static.vecteezy.com/system/resources/previews/002/746/072/non_2x/political-elite-flat-color-icon-public-demonstration-speaker-from-government-high-status-of-influence-person-avatar-cartoon-style-clip-art-for-mobile-app-isolated-rgb-illustration-vector.jpg"
-        val u:FirebaseUser = firebaseAuth.currentUser!!
-        val user = User(u.uid, u.displayName!!, u.email.toString() ,photoURL, 10, 5, 2001).getUser()
-        StoreData().saveNew(user)
-        Log.e(TAG, "USER STORED SUCCESSFULLY")
     }
 
     override fun onResume() {
         super.onResume()
-//        var inst = true
-//        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
         var checkLogin = inst.checkLoggedIn()
         Log.v("Main Activity STATE: ", checkLogin.toString())
         var state = inst.checkState()
-        if(state) {
+        if(checkLogin) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
@@ -82,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
+        Log.d("THIS SHIT IS SIGNING IN", "YESSS")
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 

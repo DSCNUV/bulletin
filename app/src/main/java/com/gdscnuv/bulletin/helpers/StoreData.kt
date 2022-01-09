@@ -18,7 +18,7 @@ class StoreData() {
             .document(user.get("uid").toString())
             .set(user)
             .addOnSuccessListener { documentReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.toString()}")
+                Log.i("SAVE: ", "Document was saved, ${documentReference}")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
