@@ -33,7 +33,6 @@ class HomeActivity : AppCompatActivity() {
         var checkLogin = inst.checkLoggedIn()
         Log.v("HOME STATE: ", checkLogin.toString())
         var state = inst.checkState()
-        Log.e("###########","edhar tak aaya "+inst.toString());
         if(!checkLogin) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))

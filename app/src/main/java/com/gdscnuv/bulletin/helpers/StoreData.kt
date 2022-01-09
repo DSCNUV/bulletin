@@ -1,5 +1,6 @@
 package com.gdscnuv.bulletin.helpers
 
+import android.provider.CalendarContract
 import android.util.Log
 import com.gdscnuv.bulletin.models.Event
 import com.gdscnuv.bulletin.models.User
@@ -78,5 +79,16 @@ class StoreData() {
     }
     fun getUser___():Map<String, Any>?{
         return x
+    }
+
+    fun getEvents(){
+        val xev = db.collection("user").document(getUid_()).collection("savedEvents")
+        xev.get().addOnSuccessListener {
+            documentSnapShot ->
+            for(doc in documentSnapShot){
+                Log.i(TAG, doc.data.toString())
+            }
+        }
+//        return xev
     }
 }

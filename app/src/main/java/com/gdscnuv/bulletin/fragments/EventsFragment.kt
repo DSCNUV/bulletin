@@ -63,11 +63,11 @@ class EventsFragment : Fragment(), CardStackListener {
             }
             else if(direction.name == "Left") {
 
-                x.getUser_()
-//                x.getUser__()
-                TimeUnit.SECONDS.sleep(5L)
-                val y = x.getUser___()
-                Log.i(TAG, y.toString())
+//                x.getUser_()
+////                x.getUser__()
+//                TimeUnit.SECONDS.sleep(5L)
+//                val y = x.getUser___()
+//                Log.i(TAG, y.toString())
             }
         }
     }
@@ -122,17 +122,17 @@ class EventsFragment : Fragment(), CardStackListener {
 
     private fun createEvents(): List<Event> {
         events = ArrayList<Event>()
-        events.add(Event(name = "Yasaka Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
-        events.add(Event(name = "Fushimi Inari Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
-        events.add(Event(name = "Bamboo Forest", organizers = "Kyoto", url = "https://source.unsplash.com/buF62ewDLcQ/600x800"))
-        events.add(Event(name = "Brooklyn Bridge", organizers= "New York", url = "https://source.unsplash.com/THozNzxEP3g/600x800"))
-        events.add(Event(name = "Empire State Building", organizers = "New York", url = "https://source.unsplash.com/USrZRcRS2Lw/600x800"))
-        events.add(Event(name = "The statue of Liberty", organizers = "New York", url = "https://source.unsplash.com/PeFk7fzxTdk/600x800"))
-        events.add(Event(name = "Louvre Museum", organizers = "Paris", url = "https://source.unsplash.com/LrMWHKqilUw/600x800"))
-        events.add(Event(name = "Eiffel Tower", organizers= "Paris", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800"))
-        events.add(Event(name = "Big Ben",organizers = "London", url = "https://source.unsplash.com/CdVAUADdqEc/600x800"))
-        events.add(Event(name = "Great Wall of China", organizers= "China", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800"))
-        events.add(Event(name = "All Events Seen", organizers = "TEAM Bulletin", url="https://source.unsplash.com/AWh9C-QjhE4/600x800"))
+        events.add(Event(name = "Yasaka Shrine", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "9/1/2022",url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
+        events.add(Event(name = "Fushimi Inari Shrine", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "22/1/2022", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
+        events.add(Event(name = "Bamboo Forest", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "11/1/2022", url = "https://source.unsplash.com/buF62ewDLcQ/600x800"))
+        events.add(Event(name = "Brooklyn Bridge", desc = "asdasdasdasdasd", organizers= "New York", date = "8/1/2022", url = "https://source.unsplash.com/THozNzxEP3g/600x800"))
+        events.add(Event(name = "Empire State Building", desc = "asdasdasdasdasd", organizers = "New York", date = "13/1/2022", url = "https://source.unsplash.com/USrZRcRS2Lw/600x800"))
+        events.add(Event(name = "The statue of Liberty", desc = "asdasdasdasdasd", organizers = "New York", date = "16/1/2022", url = "https://source.unsplash.com/PeFk7fzxTdk/600x800"))
+        events.add(Event(name = "Louvre Museum", desc = "asdasdasdasdasd", organizers = "Paris", date = "20/1/2022", url = "https://source.unsplash.com/LrMWHKqilUw/600x800"))
+        events.add(Event(name = "Eiffel Tower", desc = "asdasdasdasdasd", organizers= "Paris", date = "18/1/2022", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800"))
+        events.add(Event(name = "Big Ben", desc = "asdasdasdasdasd", organizers = "London", date = "22/1/2022", url = "https://source.unsplash.com/CdVAUADdqEc/600x800"))
+        events.add(Event(name = "Great Wall of China", desc = "asdasdasdasdasd", organizers= "China", date = "31/1/2022", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800"))
+        events.add(Event(name = "All Events Seen", desc = "asdasdasdasdasd", organizers = "TEAM Bulletin", date = "4/1/2022", url="https://source.unsplash.com/AWh9C-QjhE4/600x800"))
         return events
     }
 }

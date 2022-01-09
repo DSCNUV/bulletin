@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.gdscnuv.bulletin.R
+import com.gdscnuv.bulletin.models.Event
 import com.gdscnuv.bulletin.models.RegisteredEvent
 import com.makeramen.roundedimageview.RoundedImageView
 
-class CalenderCardListAdapter(private val context: Activity, private val event:List<RegisteredEvent>)
-    : ArrayAdapter<RegisteredEvent>(context, R.layout.calendar_card, event) {
+class CalenderCardListAdapter(private val context: Activity, private val event:List<Event>)
+    : ArrayAdapter<Event>(context, R.layout.calendar_card, event) {
 
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         Log.e("!!", event.toString())
@@ -23,7 +24,7 @@ class CalenderCardListAdapter(private val context: Activity, private val event:L
         val subtitleText = rowView.findViewById(R.id.card_calender_description) as TextView
         val imageView = rowView.findViewById(R.id.card_calender_image) as RoundedImageView
 
-        titleText.text = event[position].title
+        titleText.text = event[position].name
         subtitleText.text = event[position].desc
         Glide.with(imageView)
             .load(event[position].url)

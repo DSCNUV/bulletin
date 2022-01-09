@@ -14,31 +14,45 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.adapters.CalenderCardListAdapter
+import com.gdscnuv.bulletin.models.Event
 import com.gdscnuv.bulletin.models.RegisteredEvent
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class ProfileFragment : Fragment() {
+    lateinit var allEvents:ArrayList<Event>
+    lateinit var listView:ListView
+    lateinit var calendar:CalendarView
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val rootView:View = inflater.inflate(R.layout.fragment_profile, container, false)
-        val calendar:CalendarView= rootView.findViewById(R.id.calendarView)
+        calendar = rootView.findViewById(R.id.calendarView)
         calendar.date = Date().time
 
-        val listView:ListView = rootView.findViewById(R.id.current_events)
-        val allEventsData = dummyData()
-        var currentEvents = mutableListOf<RegisteredEvent>();
+        listView = rootView.findViewById(R.id.current_events)
+        getEvents()
+
+        return rootView
+    }
+
+    private fun updateUI_(){
+        val TAG = "UPDATEUI_"
+        val allEventsData = allEvents
+        Log.v(TAG, allEventsData.toString())
+        var currentEvents = mutableListOf<Event>();
         var myListAdapter = CalenderCardListAdapter(
             this.context as Activity,
             currentEvents
         )
         listView.adapter = myListAdapter
-
         calendar.setOnDateChangeListener(OnDateChangeListener { _, year, month, dayOfMonth ->
             val curDate = dayOfMonth.toString()
             val Year = year.toString()
@@ -52,56 +66,28 @@ class ProfileFragment : Fragment() {
             }
             myListAdapter.notifyDataSetChanged()
         })
-        return rootView
     }
+    private fun updateUI(doc:Map<String, out Any>){
+        val TAG = "UPDATEUI"
+        val event_ = Event(doc.get("id")!!, doc.get("name").toString(), doc.get("desc").toString(),doc.get("organizers").toString(), doc.get("date").toString(), doc.get("url").toString())
+        allEvents.add(event_)
+    }
+    fun getEvents() {
+        val TAG = "events"
+        var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
-    fun dummyData():List<RegisteredEvent>{
-        val events = ArrayList<RegisteredEvent>()
-        events.add(
-            RegisteredEvent(
-                id = "123",
-                title = "Yasaka Shrine",
-                desc = "Kyoto",
-                url = "https://source.unsplash.com/Xq1ntWruZQI/600x800",
-                date = "9/1/2022"
-            )
-        )
-        events.add(
-            RegisteredEvent(
-                id = "127",
-                title = "fdslkfd",
-                desc = "Kyoto",
-                url = "https://source.unsplash.com/Xq1ntWruZQI/600x800",
-                date = "9/1/2022"
-            )
-        )
-        events.add(
-            RegisteredEvent(
-                id = "124",
-                title = "fdfasYasa",
-                desc = "Kyoto",
-                url = "https://source.unsplash.com/Xq1ntWruZQI/600x800",
-                date = "29/1/2022"
-            )
-        )
-        events.add(
-            RegisteredEvent(
-                id = "125",
-                title = "fadsfdsfd Shrine",
-                desc = "Kyoto",
-                url = "https://source.unsplash.com/Xq1ntWruZQI/600x800",
-                date = "12/1/2022"
-            )
-        )
-        events.add(
-            RegisteredEvent(
-                id = "126",
-                title = "fffffffff",
-                desc = "Kyoto",
-                url = "https://source.unsplash.com/Xq1ntWruZQI/600x800",
-                date = "17/1/2022"
-            )
-        )
-        return events
+        val xev = db.collection("users").document(getUid_()).collection("savedEvents")
+        xev.get().addOnSuccessListener { documentSnapShot ->
+            allEvents = ArrayList<Event>()
+            for (doc in documentSnapShot) {
+                updateUI(doc.data)
+            }
+            updateUI_()
+        }
+    }
+    private fun getUid_():String{
+        val firebaseUser: FirebaseAuth = FirebaseAuth.getInstance()
+        val uid = firebaseUser.uid
+        return uid.toString()
     }
 }
