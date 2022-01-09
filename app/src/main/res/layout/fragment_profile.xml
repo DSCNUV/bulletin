@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".fragments.ProfileFragment"
+    android:paddingTop="16dp"
+    android:background="@color/primary"
+    android:layout_marginBottom="58dp">
 
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_fragment_fragment"
-        android:textColor="@color/white" />
+        app:cardCornerRadius="14dp" >
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="6dp"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="17dp"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="@color/primary"
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="-8dp"></androidx.cardview.widget.CardView>
+
 
 </FrameLayout>
