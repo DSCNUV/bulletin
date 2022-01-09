@@ -42,15 +42,23 @@ class EventsFragment : Fragment(), CardStackListener {
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
         val TAG = "Swiper"
-        if (manager.topPosition == adapter.itemCount - 5) {
-            paginate()
+        Log.v(TAG, "${adapter.itemCount - manager.topPosition}")
+        if (adapter.itemCount - manager.topPosition == 1) {
+//            paginate()
+            if(direction.name == "Left") {
+                manager.topPosition -= 1
+            }
+            else if(direction.name == "Right"){
+                paginate()
+            }
         }
+        else{
         if(direction.name == "Right"){
             StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
             Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
         }
         else if(direction.name == "Left") {
-            Toast.makeText(this.context, "Left Swiped!", Toast.LENGTH_SHORT).show()
+        }
         }
     }
 
@@ -114,6 +122,7 @@ class EventsFragment : Fragment(), CardStackListener {
         events.add(Event(name = "Eiffel Tower", organizers= "Paris", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800"))
         events.add(Event(name = "Big Ben",organizers = "London", url = "https://source.unsplash.com/CdVAUADdqEc/600x800"))
         events.add(Event(name = "Great Wall of China", organizers= "China", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800"))
+        events.add(Event(name = "All Events Seen", organizers = "TEAM Bulletin", url="https://source.unsplash.com/AWh9C-QjhE4/600x800"))
         return events
     }
 }
