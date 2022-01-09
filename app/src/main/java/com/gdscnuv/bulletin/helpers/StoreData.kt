@@ -20,7 +20,7 @@ class StoreData() {
             .document(user.get("uid").toString())
             .set(user)
             .addOnSuccessListener { documentReference ->
-                Log.i("SAVE: ", "Document was saved, ${documentReference}")
+                Log.i("SAVE: ", "Document was saved!")
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
@@ -30,9 +30,15 @@ class StoreData() {
     fun saveEvents(event: Event){
         val firebaseUser:FirebaseAuth = FirebaseAuth.getInstance()
         val uid = firebaseUser.uid
-        val addEvent = db.collection("users").document(uid.toString()).collection("savedEvents").add(event.getEvent()).isSuccessful
+        val addEvent = db.collection("users")
+            .document(uid.toString())
+            .collection("savedEvents")
+            .document(event.id.toString())
+            .set(event.getEvent()).isSuccessful
         if(addEvent){
             Log.i(TAG, "SUCCESSFULLY SAVED!")
+        }else{
+            Log.i(TAG, "FAILED SAVED!")
         }
     }
 }
