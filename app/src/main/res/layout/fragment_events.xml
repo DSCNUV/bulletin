@@ -3,15 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="20dp"
+    android:layout_height="match_parent"
     android:background="@color/primary"
-    tools:context=".fragments.EventsFragment">
+    tools:context=".fragments.EventsFragment"
+    android:layout_marginBottom="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/event_bg" android:layout_marginTop="16dp" android:paddingTop="10dp">
+        android:layout_height="match_parent"
+        android:background="@drawable/event_bg"
+        android:layout_marginTop="16dp"
+        android:paddingTop="20dp">
         <com.yuyakaido.android.cardstackview.CardStackView
             android:id="@+id/card_stack_view"
             android:layout_width="match_parent"
@@ -21,14 +23,16 @@
             android:paddingHorizontal="12dp"
             android:foregroundGravity="center"
             >
-
         </com.yuyakaido.android.cardstackview.CardStackView>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="17dp"
         android:layout_gravity="bottom"
-        android:background="@drawable/bottom_nav_bg"></LinearLayout>
+        app:cardBackgroundColor="@color/primary"
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="-8dp">
 
+    </androidx.cardview.widget.CardView>
 </FrameLayout>
