@@ -3,10 +3,13 @@ package com.gdscnuv.bulletin.helpers
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
+import com.gdscnuv.bulletin.MainActivity
+import com.gdscnuv.bulletin.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.firebase.auth.FirebaseUser
 
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -60,7 +63,6 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
     }
     fun checkLoggedIn():Boolean {
         var loggedIn: Boolean = false
-//        firebaseUser = FirebaseAuth.getInstance().currentUser!!
         if(FirebaseAuth.getInstance().currentUser != null){
             loggedIn = true
         }
@@ -68,7 +70,7 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
     }
 
     fun firebaseAuthWithGoogle(idToken: String, activity: Activity, activity2: Class<*>):Boolean {
-        var go:Boolean = true
+        var go = true
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         firebaseAuth = firebaseInstance()
         Log.e(
@@ -81,7 +83,7 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
-//                    val user = firebaseAuth.currentUser
+                    userStoreSetup()
                     go = true
                         mainToProf(activity, activity2)
 //                    updateUI(user)
@@ -97,6 +99,16 @@ class FirebaseLogin(private var activity: Activity, private val s:String) {
             }
             return go
     }
+
+    private fun userStoreSetup(){
+        val photoURL = "https://static.vecteezy.com/system/resources/previews/002/746/072/non_2x/political-elite-flat-color-icon-public-demonstration-speaker-from-government-high-status-of-influence-person-avatar-cartoon-style-clip-art-for-mobile-app-isolated-rgb-illustration-vector.jpg"
+        var u:FirebaseUser? = firebaseAuth.currentUser
+        Log.d("USER DETAILS: ", u.toString())
+        var user = User(u?.uid.toString() , u?.displayName.toString(), u?.email!! ,photoURL, 10, 5, 2001).getUser()
+        StoreData().saveNew(user)
+        Log.e(TAG, "USER STORED SUCCESSFULLY")
+    }
+
     private fun mainToProf(activity: Activity, activity2: Class<*>){
         val intent = Intent(activity, activity2)
         activity.startActivity(intent)

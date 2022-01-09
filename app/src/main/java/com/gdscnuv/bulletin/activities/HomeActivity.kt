@@ -31,10 +31,10 @@ class HomeActivity : AppCompatActivity() {
 //        var inst = false
         val inst = FirebaseLogin(this@HomeActivity, "asd")
         var checkLogin = inst.checkLoggedIn()
-        Log.v("STATE: ", checkLogin.toString())
+        Log.v("HOME STATE: ", checkLogin.toString())
         var state = inst.checkState()
         Log.e("###########","edhar tak aaya "+inst.toString());
-        if(state) {
+        if(!checkLogin) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))
         }
@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.title == "Logout"){
-            Log.v("LOGIN STATE: ", "REACHING HERE")
+            Log.v("HOME STATE: ", "Loggin Out")
             Firebase.auth.signOut()
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))
         }

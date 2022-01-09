@@ -11,9 +11,12 @@ import android.view.MenuItem
 import com.gdscnuv.bulletin.activities.HomeActivity
 import com.gdscnuv.bulletin.databinding.ActivityMainBinding
 import com.gdscnuv.bulletin.helpers.FirebaseLogin
+import com.gdscnuv.bulletin.helpers.StoreData
+import com.gdscnuv.bulletin.models.User
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -42,7 +45,9 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = inst.enablegso()
 
         firebaseAuth = inst.firebaseInstance()
-        inst.checkState()
+        if(inst.checkLoggedIn()){
+            startActivity(Intent(this@MainActivity, HomeActivity::class.java))
+        }
 
         // Google SignIn button
         binding.signInButton.setOnClickListener{
@@ -53,13 +58,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-//        var inst = true
-//        inst = FirebaseLogin(this@MainActivity, "asd").checkState()
         var checkLogin = inst.checkLoggedIn()
-        Log.v("STATE: ", checkLogin.toString())
+        Log.v("Main Activity STATE: ", checkLogin.toString())
         var state = inst.checkState()
-        Log.e("###########","edhar tak aaya "+inst.toString());
-        if(state) {
+        if(checkLogin) {
             Log.d("CHANGED", "THE STATE WILL CHANGE NOW!")
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
+        Log.d("THIS SHIT IS SIGNING IN", "YESSS")
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 

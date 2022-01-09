@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.adapters.CardStackAdapter
 import com.gdscnuv.bulletin.helpers.SpotDiffCallback
+import com.gdscnuv.bulletin.helpers.StoreData
 import com.gdscnuv.bulletin.models.Event
 import com.yuyakaido.android.cardstackview.*
 
@@ -20,6 +22,7 @@ class EventsFragment : Fragment(), CardStackListener {
     private lateinit var cardStackView:CardStackView
     private lateinit var manager:CardStackLayoutManager
     private lateinit var adapter:CardStackAdapter
+    private lateinit var events:ArrayList<Event>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +41,24 @@ class EventsFragment : Fragment(), CardStackListener {
 
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
-        Log.d("!!!!!!!!!!!!!!!!", adapter.getEvents()[manager.topPosition].toString())
-        if (manager.topPosition == adapter.itemCount - 5) {
-            paginate()
+        val TAG = "Swiper"
+        Log.v(TAG, "${adapter.itemCount - manager.topPosition}")
+        if (adapter.itemCount - manager.topPosition == 1) {
+//            paginate()
+            if(direction.name == "Left") {
+                manager.topPosition -= 1
+            }
+            else if(direction.name == "Right"){
+                paginate()
+            }
+        }
+        else{
+        if(direction.name == "Right"){
+            StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
+            Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
+        }
+        else if(direction.name == "Left") {
+        }
         }
     }
 
@@ -93,7 +111,7 @@ class EventsFragment : Fragment(), CardStackListener {
     }
 
     private fun createEvents(): List<Event> {
-        val events = ArrayList<Event>()
+        events = ArrayList<Event>()
         events.add(Event(name = "Yasaka Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
         events.add(Event(name = "Fushimi Inari Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
         events.add(Event(name = "Bamboo Forest", organizers = "Kyoto", url = "https://source.unsplash.com/buF62ewDLcQ/600x800"))
@@ -104,6 +122,7 @@ class EventsFragment : Fragment(), CardStackListener {
         events.add(Event(name = "Eiffel Tower", organizers= "Paris", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800"))
         events.add(Event(name = "Big Ben",organizers = "London", url = "https://source.unsplash.com/CdVAUADdqEc/600x800"))
         events.add(Event(name = "Great Wall of China", organizers= "China", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800"))
+        events.add(Event(name = "All Events Seen", organizers = "TEAM Bulletin", url="https://source.unsplash.com/AWh9C-QjhE4/600x800"))
         return events
     }
 }

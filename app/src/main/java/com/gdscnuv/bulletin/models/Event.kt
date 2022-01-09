@@ -11,6 +11,15 @@ data class Event(
     companion object {
         private var counter = 0L
     }
+    private val event = hashMapOf(
+        "id" to id,
+        "name" to name,
+        organizers to organizers,
+        "url" to url
+    )
+    fun getEvent():HashMap<String, out Any>{
+        return event
+    }
 }
 
 data class RegisteredEvent(
