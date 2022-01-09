@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DiffUtil
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.adapters.CardStackAdapter
 import com.gdscnuv.bulletin.helpers.SpotDiffCallback
+import com.gdscnuv.bulletin.helpers.StoreData
 import com.gdscnuv.bulletin.models.Event
 import com.yuyakaido.android.cardstackview.*
 
@@ -20,6 +22,7 @@ class EventsFragment : Fragment(), CardStackListener {
     private lateinit var cardStackView:CardStackView
     private lateinit var manager:CardStackLayoutManager
     private lateinit var adapter:CardStackAdapter
+    private lateinit var events:ArrayList<Event>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +41,16 @@ class EventsFragment : Fragment(), CardStackListener {
 
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
+        val TAG = "Swiper"
         if (manager.topPosition == adapter.itemCount - 5) {
             paginate()
+        }
+        if(direction.name == "Right"){
+            StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
+            Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
+        }
+        else if(direction.name == "Left") {
+            Toast.makeText(this.context, "Left Swiped!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -92,7 +103,7 @@ class EventsFragment : Fragment(), CardStackListener {
     }
 
     private fun createEvents(): List<Event> {
-        val events = ArrayList<Event>()
+        events = ArrayList<Event>()
         events.add(Event(name = "Yasaka Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
         events.add(Event(name = "Fushimi Inari Shrine", organizers = "Kyoto", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
         events.add(Event(name = "Bamboo Forest", organizers = "Kyoto", url = "https://source.unsplash.com/buF62ewDLcQ/600x800"))
