@@ -38,6 +38,7 @@ class EventsFragment : Fragment(), CardStackListener {
 
     override fun onCardSwiped(direction: Direction) {
         Log.d("CardStackView", "onCardSwiped: p = ${manager.topPosition}, d = $direction")
+        Log.d("!!!!!!!!!!!!!!!!", adapter.getEvents()[manager.topPosition].toString())
         if (manager.topPosition == adapter.itemCount - 5) {
             paginate()
         }
@@ -49,12 +50,12 @@ class EventsFragment : Fragment(), CardStackListener {
 
     override fun onCardAppeared(view: View, position: Int) {
         val textView = view.findViewById<TextView>(R.id.card_event_name)
-        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
+//        Log.d("CardStackView", "onCardAppeared: ($position) ${textView.text}")
     }
 
     override fun onCardDisappeared(view: View, position: Int) {
         val textView = view.findViewById<TextView>(R.id.card_event_name)
-        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
+//        Log.d("CardStackView", "onCardDisappeared: ($position) ${textView.text}")
     }
 
     private fun setupCardStackView() {
