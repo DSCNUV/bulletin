@@ -16,6 +16,7 @@ data class Event(
     private val event = hashMapOf(
         "id" to id,
         "name" to name,
+        "desc" to desc,
         "organizers" to organizers,
         "date" to date,
         "url" to url

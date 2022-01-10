@@ -57,9 +57,6 @@ class EventsFragment : Fragment(), CardStackListener {
         else{
             if(direction.name == "Right"){
                 StoreData().saveEvents(adapter.getEvents()[manager.topPosition-1])
-                ProfileFragment().getEvents(false)
-//                ProfileFragment().allEvents.add(adapter.getEvents()[manager.topPosition-1])
-                Log.i(TAG, "THE ALL EVENTS LIST WAS UPDATED!")
                 Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
             }
             else if(direction.name == "Left") {

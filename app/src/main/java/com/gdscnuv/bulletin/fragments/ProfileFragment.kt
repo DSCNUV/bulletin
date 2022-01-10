@@ -25,15 +25,6 @@ class ProfileFragment : Fragment() {
     lateinit var allEvents:ArrayList<Event>
     lateinit var listView:ListView
     lateinit var calendar:CalendarView
-    var iter = 0
-    override fun onStart() {
-        super.onStart()
-        Log.v("RESUME SECTION: ", "RESUME STARTED!")
-
-        if(iter > 0)
-        updateUI_()
-        iter += 1
-    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,9 +90,6 @@ class ProfileFragment : Fragment() {
             } else {
                 Log.d(TAG, "Current data: null")
             }
-
-//                .get().addOnSuccessListener { documentSnapShot ->
-
         }
     }
     private fun getUid_():String{
