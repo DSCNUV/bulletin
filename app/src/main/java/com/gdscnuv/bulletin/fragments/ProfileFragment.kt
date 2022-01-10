@@ -25,15 +25,6 @@ class ProfileFragment : Fragment() {
     lateinit var allEvents:ArrayList<Event>
     lateinit var listView:ListView
     lateinit var calendar:CalendarView
-    var iter = 0
-    override fun onStart() {
-        super.onStart()
-        Log.v("RESUME SECTION: ", "RESUME STARTED!")
-
-        if(iter > 0)
-        updateUI_()
-        iter += 1
-    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,7 +64,7 @@ class ProfileFragment : Fragment() {
             myListAdapter.notifyDataSetChanged()
         })
     }
-    private fun updateUI(doc:Map<String, out Any>){
+    private fun updateUI(doc:MutableMap<String, Any>){
         val TAG = "UPDATEUI"
         val event_ = Event(doc.get("id")!!, doc.get("name").toString(), doc.get("desc").toString(),doc.get("organizers").toString(), doc.get("date").toString(), doc.get("url").toString())
         allEvents.add(event_)
@@ -83,13 +74,22 @@ class ProfileFragment : Fragment() {
         var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         val xev = db.collection("users").document(getUid_()).collection("savedEvents")
-        xev.get().addOnSuccessListener { documentSnapShot ->
-            allEvents = ArrayList<Event>()
-            for (doc in documentSnapShot) {
-                updateUI(doc.data)
+        xev.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
             }
-            if(a)
-            updateUI_()
+            if (snapshot != null && !snapshot.documentChanges.isEmpty()) {
+                    allEvents = ArrayList<Event>()
+                    for (doc in snapshot.documents) {
+                        updateUI(doc.data!!)
+                    }
+                    if (a)
+                        updateUI_()
+                Log.d(TAG, "Current documents: ${snapshot.documents}")
+            } else {
+                Log.d(TAG, "Current data: null")
+            }
         }
     }
     private fun getUid_():String{
