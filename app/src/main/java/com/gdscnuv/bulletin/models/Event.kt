@@ -16,7 +16,8 @@ data class Event(
     private val event = hashMapOf(
         "id" to id,
         "name" to name,
-        organizers to organizers,
+        "organizers" to organizers,
+        "date" to date,
         "url" to url
     )
     fun getEvent():HashMap<String, out Any>{

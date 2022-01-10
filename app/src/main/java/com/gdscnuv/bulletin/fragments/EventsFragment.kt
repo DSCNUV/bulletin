@@ -47,27 +47,20 @@ class EventsFragment : Fragment(), CardStackListener {
         val TAG = "Swiper"
         Log.v(TAG, "${adapter.itemCount - manager.topPosition}")
         if (adapter.itemCount - manager.topPosition == 1) {
-//            paginate()
             if(direction.name == "Left") {
                 manager.topPosition -= 1
             }
             else if(direction.name == "Right"){
                 paginate()
-//                manager.topPosition = manager.
             }
         }
         else{
             if(direction.name == "Right"){
-                StoreData().saveEvents(adapter.getEvents()[manager.topPosition])
+                StoreData().saveEvents(adapter.getEvents()[manager.topPosition-1])
+                ProfileFragment().getEvents(false)
                 Toast.makeText(this.context, "Right Swiped!", Toast.LENGTH_SHORT).show()
             }
             else if(direction.name == "Left") {
-
-//                x.getUser_()
-////                x.getUser__()
-//                TimeUnit.SECONDS.sleep(5L)
-//                val y = x.getUser___()
-//                Log.i(TAG, y.toString())
             }
         }
     }

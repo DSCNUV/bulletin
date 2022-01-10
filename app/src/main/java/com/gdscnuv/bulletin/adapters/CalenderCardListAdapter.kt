@@ -9,7 +9,6 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.models.Event
-import com.gdscnuv.bulletin.models.RegisteredEvent
 import com.makeramen.roundedimageview.RoundedImageView
 
 class CalenderCardListAdapter(private val context: Activity, private val event:List<Event>)

@@ -15,10 +15,8 @@ import androidx.fragment.app.Fragment
 import com.gdscnuv.bulletin.R
 import com.gdscnuv.bulletin.adapters.CalenderCardListAdapter
 import com.gdscnuv.bulletin.models.Event
-import com.gdscnuv.bulletin.models.RegisteredEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,7 +25,15 @@ class ProfileFragment : Fragment() {
     lateinit var allEvents:ArrayList<Event>
     lateinit var listView:ListView
     lateinit var calendar:CalendarView
+    var iter = 0
+    override fun onStart() {
+        super.onStart()
+        Log.v("RESUME SECTION: ", "RESUME STARTED!")
 
+        if(iter > 0)
+        updateUI_()
+        iter += 1
+    }
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +44,7 @@ class ProfileFragment : Fragment() {
         calendar.date = Date().time
 
         listView = rootView.findViewById(R.id.current_events)
-        getEvents()
+        getEvents(true)
 
         return rootView
     }
@@ -72,7 +78,7 @@ class ProfileFragment : Fragment() {
         val event_ = Event(doc.get("id")!!, doc.get("name").toString(), doc.get("desc").toString(),doc.get("organizers").toString(), doc.get("date").toString(), doc.get("url").toString())
         allEvents.add(event_)
     }
-    fun getEvents() {
+    fun getEvents(a:Boolean) {
         val TAG = "events"
         var db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -82,6 +88,7 @@ class ProfileFragment : Fragment() {
             for (doc in documentSnapShot) {
                 updateUI(doc.data)
             }
+            if(a)
             updateUI_()
         }
     }
