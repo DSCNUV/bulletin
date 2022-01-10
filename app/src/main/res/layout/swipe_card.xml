@@ -31,7 +31,7 @@
             android:layout_gravity="bottom"
             android:paddingHorizontal="16dp"
             android:paddingVertical="10dp"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="300dp"
             android:background="#BF000000">
 
             <TextView
@@ -41,9 +41,24 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/fahkwang_light"
                 android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/card_event_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik"
+                android:textColor="@color/white"
+                android:textSize="16sp" android:layout_marginBottom="14dp"/>
 
             <TextView
                 android:id="@+id/card_event_organizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rubik"
+                android:textColor="@color/white"
+                android:textSize="20sp" android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/card_event_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/rubik"

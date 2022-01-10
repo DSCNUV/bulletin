@@ -115,17 +115,18 @@ class EventsFragment : Fragment(), CardStackListener {
 
     private fun createEvents(): List<Event> {
         events = ArrayList<Event>()
-        events.add(Event(name = "Yasaka Shrine", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "9/1/2022",url = "https://source.unsplash.com/Xq1ntWruZQI/600x800"))
-        events.add(Event(name = "Fushimi Inari Shrine", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "22/1/2022", url = "https://source.unsplash.com/NYyCqdBOKwc/600x800"))
-        events.add(Event(name = "Bamboo Forest", desc = "asdasdasdasdasd", organizers = "Kyoto", date = "11/1/2022", url = "https://source.unsplash.com/buF62ewDLcQ/600x800"))
-        events.add(Event(name = "Brooklyn Bridge", desc = "asdasdasdasdasd", organizers= "New York", date = "8/1/2022", url = "https://source.unsplash.com/THozNzxEP3g/600x800"))
-        events.add(Event(name = "Empire State Building", desc = "asdasdasdasdasd", organizers = "New York", date = "13/1/2022", url = "https://source.unsplash.com/USrZRcRS2Lw/600x800"))
-        events.add(Event(name = "The statue of Liberty", desc = "asdasdasdasdasd", organizers = "New York", date = "16/1/2022", url = "https://source.unsplash.com/PeFk7fzxTdk/600x800"))
-        events.add(Event(name = "Louvre Museum", desc = "asdasdasdasdasd", organizers = "Paris", date = "20/1/2022", url = "https://source.unsplash.com/LrMWHKqilUw/600x800"))
-        events.add(Event(name = "Eiffel Tower", desc = "asdasdasdasdasd", organizers= "Paris", date = "18/1/2022", url = "https://source.unsplash.com/HN-5Z6AmxrM/600x800"))
-        events.add(Event(name = "Big Ben", desc = "asdasdasdasdasd", organizers = "London", date = "22/1/2022", url = "https://source.unsplash.com/CdVAUADdqEc/600x800"))
-        events.add(Event(name = "Great Wall of China", desc = "asdasdasdasdasd", organizers= "China", date = "31/1/2022", url = "https://source.unsplash.com/AWh9C-QjhE4/600x800"))
-        events.add(Event(name = "All Events Seen", desc = "asdasdasdasdasd", organizers = "TEAM Bulletin", date = "4/1/2022", url="https://source.unsplash.com/AWh9C-QjhE4/600x800"))
+        events.add(Event(name = "Android Study Jam", desc = "Start you Android journey by learning Kotlin today!", organizers = "GDSC", date = "9/1/2022",url = "https://source.unsplash.com/ourQHRTE2IM/600x800"))
+        events.add(Event(name = "HacktoberFest NUV", desc = "Let get open-sourcing", organizers = "GDSCNUV, HackClub NUV, MozNUV", date = "22/1/2022", url = "https://source.unsplash.com/DOu3JJ3eLQc/600x800"))
+        events.add(Event(name = "NUVdeep", desc = "Celebrate the festival of lights!", organizers = "CSE", date = "11/1/2022", url = "https://source.unsplash.com/249DzAuJTqQ/600x800"))
+        events.add(Event(name = "30 Days of Google Cloud", desc = "Learn to work with Google Cloud", organizers= "GDSC", date = "8/1/2022", url = "https://source.unsplash.com/SYTO3xs06fU/600x800"))
+        events.add(Event(name = "Vibin", desc = "Networking & feedback session", organizers = "Hack Club NUV", date = "13/1/2022", url = "https://source.unsplash.com/wnf_LJiJG0E/600x800"))
+        events.add(Event(name = "Capture the Flag", desc = "Getting started with cyber security", organizers = "CDS", date = "16/1/2022", url = "https://source.unsplash.com/HhNe16wgVFg/600x800"))
+        events.add(Event(name = "Open mic", desc = "A evening to showcase your hidden talents", organizers = "Cultural Committee", date = "20/1/2022", url = "https://source.unsplash.com/GkWP64truqg/600x800"))
+        events.add(Event(name = "BBA Bazigar", desc = "Learn to be an entrepreneur", organizers= "BBA", date = "18/1/2022", url = "https://source.unsplash.com/Hb6uWq0i4MI/600x800"))
+        events.add(Event(name = "Flutter bootcamp", desc = "Start learning flutter", organizers = "GDSC", date = "22/1/2022", url = "https://source.unsplash.com/QBpZGqEMsKg/600x800"))
+        events.add(Event(name = "Break the ice", desc = "Networking & high tea", organizers= "GDSC", date = "31/1/2022", url = "https://source.unsplash.com/mqoLpeeYBic/600x800"))
+        events.add(Event(name = "Food festival", desc = "Taste the variety", organizers = "TEAM Bulletin", date = "4/1/2022", url="https://source.unsplash.com/ptf91j8SFiM/600x800"))
+        events.add(Event(name = "End", desc = "Last slide", organizers = "TEAM Bulletin", date = "NA", url="https://cdn.discordapp.com/attachments/928708312223084594/930037486233739274/last_slide.png"))
         return events
     }
 }

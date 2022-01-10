@@ -25,6 +25,8 @@ class CardStackAdapter(
         val spot = events[position]
         holder.name.text = spot.name
         holder.organizers.text = spot.organizers
+        holder.desc.text = "Organizers: " +spot.desc
+        holder.date.text = "Date: "+spot.date
         Glide.with(holder.image)
             .load(spot.url)
             .into(holder.image)
@@ -48,6 +50,8 @@ class CardStackAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.card_event_name)
         var organizers: TextView = view.findViewById(R.id.card_event_organizer)
+        val desc:TextView = view.findViewById(R.id.card_event_desc)
+        val date:TextView = view.findViewById(R.id.card_event_date)
         var image: ImageView = view.findViewById(R.id.item_image)
     }
 
