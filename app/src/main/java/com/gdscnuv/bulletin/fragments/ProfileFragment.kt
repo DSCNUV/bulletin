@@ -32,6 +32,7 @@ class ProfileFragment : Fragment() {
     lateinit var listView:ListView
     lateinit var  calendarView: CompactCalendarView
     lateinit var calendarMonth:TextView
+    lateinit var eventTitle:TextView
     val dateFormatForMonth = SimpleDateFormat("MMM - yyyy", Locale.getDefault())
 
     override fun onCreateView(
@@ -50,6 +51,7 @@ class ProfileFragment : Fragment() {
         listView = rootView.findViewById(R.id.current_events)
         getEvents(true)
 
+        eventTitle = rootView.findViewById(R.id.calender_events_title)
         return rootView
     }
 
@@ -67,6 +69,7 @@ class ProfileFragment : Fragment() {
                         currentEvents.add(y)
                 }
             }
+            eventTitle.text = "Registered events"
         }
 
         var myListAdapter = CalenderCardListAdapter(
@@ -86,8 +89,10 @@ class ProfileFragment : Fragment() {
                                 currentEvents.add(y)
                         }
                     }
+                    eventTitle.text = "Registered events"
                 }else{
                     currentEvents.clear()
+                    eventTitle.text = "No registered events!"
                 }
                 myListAdapter.notifyDataSetChanged()
             }
