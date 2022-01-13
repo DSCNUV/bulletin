@@ -63,4 +63,7 @@ dependencies {
 
     //bottom nav library
     implementation 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
+
+    //calendar library
+    implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
 }

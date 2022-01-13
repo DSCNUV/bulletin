@@ -114,17 +114,17 @@ class EventsFragment : Fragment(), CardStackListener {
 
     private fun createEvents(): List<Event> {
         events = ArrayList<Event>()
-        events.add(Event(name = "Android Study Jam", desc = "Start you Android journey by learning Kotlin today!", organizers = "GDSC", date = "9/1/2022",url = "https://source.unsplash.com/ourQHRTE2IM/600x800"))
-        events.add(Event(name = "HacktoberFest NUV", desc = "Let get open-sourcing", organizers = "GDSCNUV, HackClub NUV, MozNUV", date = "22/1/2022", url = "https://source.unsplash.com/DOu3JJ3eLQc/600x800"))
-        events.add(Event(name = "NUVdeep", desc = "Celebrate the festival of lights!", organizers = "CSE", date = "11/1/2022", url = "https://source.unsplash.com/249DzAuJTqQ/600x800"))
-        events.add(Event(name = "30 Days of Google Cloud", desc = "Learn to work with Google Cloud", organizers= "GDSC", date = "8/1/2022", url = "https://source.unsplash.com/SYTO3xs06fU/600x800"))
-        events.add(Event(name = "Vibin", desc = "Networking & feedback session", organizers = "Hack Club NUV", date = "13/1/2022", url = "https://source.unsplash.com/wnf_LJiJG0E/600x800"))
-        events.add(Event(name = "Capture the Flag", desc = "Getting started with cyber security", organizers = "CDS", date = "16/1/2022", url = "https://source.unsplash.com/HhNe16wgVFg/600x800"))
-        events.add(Event(name = "Open mic", desc = "A evening to showcase your hidden talents", organizers = "Cultural Committee", date = "20/1/2022", url = "https://source.unsplash.com/GkWP64truqg/600x800"))
-        events.add(Event(name = "BBA Bazigar", desc = "Learn to be an entrepreneur", organizers= "BBA", date = "18/1/2022", url = "https://source.unsplash.com/Hb6uWq0i4MI/600x800"))
-        events.add(Event(name = "Flutter bootcamp", desc = "Start learning flutter", organizers = "GDSC", date = "22/1/2022", url = "https://source.unsplash.com/QBpZGqEMsKg/600x800"))
-        events.add(Event(name = "Break the ice", desc = "Networking & high tea", organizers= "GDSC", date = "31/1/2022", url = "https://source.unsplash.com/mqoLpeeYBic/600x800"))
-        events.add(Event(name = "Food festival", desc = "Taste the variety", organizers = "TEAM Bulletin", date = "4/1/2022", url="https://source.unsplash.com/ptf91j8SFiM/600x800"))
+        events.add(Event(name = "Android Study Jam", desc = "Start you Android journey by learning Kotlin today!", organizers = "GDSC", date = "09/01/2022",url = "https://source.unsplash.com/ourQHRTE2IM/600x800"))
+        events.add(Event(name = "HacktoberFest NUV", desc = "Let get open-sourcing", organizers = "GDSCNUV, HackClub NUV, MozNUV", date = "22/01/2022", url = "https://source.unsplash.com/DOu3JJ3eLQc/600x800"))
+        events.add(Event(name = "NUVdeep", desc = "Celebrate the festival of lights!", organizers = "CSE", date = "11/01/2022", url = "https://source.unsplash.com/249DzAuJTqQ/600x800"))
+        events.add(Event(name = "30 Days of Google Cloud", desc = "Learn to work with Google Cloud", organizers= "GDSC", date = "08/01/2022", url = "https://source.unsplash.com/SYTO3xs06fU/600x800"))
+        events.add(Event(name = "Vibin", desc = "Networking & feedback session", organizers = "Hack Club NUV", date = "13/01/2022", url = "https://source.unsplash.com/wnf_LJiJG0E/600x800"))
+        events.add(Event(name = "Capture the Flag", desc = "Getting started with cyber security", organizers = "CDS", date = "16/01/2022", url = "https://source.unsplash.com/HhNe16wgVFg/600x800"))
+        events.add(Event(name = "Open mic", desc = "A evening to showcase your hidden talents", organizers = "Cultural Committee", date = "20/01/2022", url = "https://source.unsplash.com/GkWP64truqg/600x800"))
+        events.add(Event(name = "BBA Bazigar", desc = "Learn to be an entrepreneur", organizers= "BBA", date = "18/01/2022", url = "https://source.unsplash.com/Hb6uWq0i4MI/600x800"))
+        events.add(Event(name = "Flutter bootcamp", desc = "Start learning flutter", organizers = "GDSC", date = "22/01/2022", url = "https://source.unsplash.com/QBpZGqEMsKg/600x800"))
+        events.add(Event(name = "Break the ice", desc = "Networking & high tea", organizers= "GDSC", date = "31/01/2022", url = "https://source.unsplash.com/mqoLpeeYBic/600x800"))
+        events.add(Event(name = "Food festival", desc = "Taste the variety", organizers = "TEAM Bulletin", date = "04/01/2022", url="https://source.unsplash.com/ptf91j8SFiM/600x800"))
         events.add(Event(name = "End", desc = "Last slide", organizers = "TEAM Bulletin", date = "NA", url="https://cdn.discordapp.com/attachments/928708312223084594/930037486233739274/last_slide.png"))
         return events
     }

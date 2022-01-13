@@ -13,17 +13,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="14dp" >
-        <CalendarView
-            android:id="@+id/calendarView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="4dp"/>
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/calender_view_title"
+                android:text="Month"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"/>
+            <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/calender_view"
+                android:layout_width="match_parent"
+                android:paddingHorizontal="10dp"
+                android:layout_height="300dp"
+                app:compactCalendarTargetHeight="250dp"
+                app:compactCalendarTextSize="12sp"
+                app:compactCalendarBackgroundColor="@color/white"
+                app:compactCalendarTextColor="@color/primary_dark"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="#DF9F9E"
+                app:compactCalendarCurrentDayBackgroundColor="#EAE2E2"
+                app:compactCalendarMultiEventIndicatorColor="@color/accent"
+                app:compactCalendarEventIndicatorStyle="fill_large_indicator"
+                />
+        </LinearLayout>
+
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="280dp"
             android:id="@+id/current_events"
             android:layout_gravity="bottom"
-            android:paddingTop="8dp"
+            android:paddingTop="16dp"
             android:paddingHorizontal="16dp"
             android:background="@drawable/event_bg"
             android:scrollbars="none"
