@@ -3,7 +3,7 @@ package com.gdscnuv.bulletin.models
 import java.util.*
 
 data class Event(
-    val id: Any= counter++,
+    val id: Any= Int,
     val name: String,
     val desc:String,
     val organizers: String,
@@ -11,7 +11,7 @@ data class Event(
     val url: String
 ) {
     companion object {
-        private var counter = 0L
+        private var counter = 100
     }
     private val event = hashMapOf(
         "id" to id,

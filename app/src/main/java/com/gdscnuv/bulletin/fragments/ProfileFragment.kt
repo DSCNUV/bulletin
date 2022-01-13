@@ -105,7 +105,6 @@ class ProfileFragment : Fragment() {
             ).toString(), doc.get("date").toString(), doc.get("url").toString()
         )
         allEvents.add(event_)
-        Log.e("date:", event_.date)
         var l = LocalDate.parse(event_.date, DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         val ev1 = com.github.sundeepk.compactcalendarview.domain.Event(
             Color.rgb(245, 208, 207),
@@ -140,7 +139,7 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun getUid_():String{
+    fun getUid_():String{
         val firebaseUser: FirebaseAuth = FirebaseAuth.getInstance()
         val uid = firebaseUser.uid
         return uid.toString()
