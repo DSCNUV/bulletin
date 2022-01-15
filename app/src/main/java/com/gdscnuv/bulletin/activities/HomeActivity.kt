@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.gdscnuv.bulletin.MainActivity
 import com.gdscnuv.bulletin.R
+import com.gdscnuv.bulletin.RegisterEventActivity
 import com.gdscnuv.bulletin.adapters.BottomNavAdapter
 import com.gdscnuv.bulletin.helpers.FirebaseLogin
 import com.gigamole.navigationtabstrip.NavigationTabStrip
@@ -62,6 +63,9 @@ class HomeActivity : AppCompatActivity() {
             Log.v("HOME STATE: ", "Loggin Out")
             Firebase.auth.signOut()
             startActivity(Intent(this@HomeActivity, MainActivity::class.java))
+        }
+        else if(item.title == "Register"){
+            startActivity(Intent(this@HomeActivity, RegisterEventActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }
