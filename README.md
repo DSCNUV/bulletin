@@ -29,14 +29,14 @@ Bulletin helps you to "swipe" through your favorite events in the campus and giv
 - Android studio
 ## License
 
-Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License.
-
+Distributed under the [MPL 2.0] (https://www.mozilla.org/en-US/MPL/2.0/) License.
 
 ## Authors
 
 - [@shreyaparadkar](https://www.github.com/shreyaparadkar)
 - [@ashwinadiga01](https://www.github.com/ashwinadiga01)
 - [@nimit2801](https://www.github.com/nimit2801)
+- [@sakshamgorey](https://github.com/sakshamgorey)
 
 
 ## Future updates
