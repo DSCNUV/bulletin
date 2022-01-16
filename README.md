@@ -11,12 +11,14 @@ Bulletin helps you to "swipe" through your favorite events in the campus and giv
 ![App Screenshot](images/ss1.png)
 ![App Screenshot](images/ss2.png)
 ![App Screenshot](images/ss3.png)
+<img width="185" alt="portfolio_view" src="https://user-images.githubusercontent.com/53462249/149668242-7257f8c6-57f8-4577-9383-20d7290edd95.png">
 ![App Screenshot](images/ss4.png)
+
 
 
 ## Features
 
-- Basically a digital bulletin board
+- A digital bulletin board
 - Access a variety of events, both in and out of your comfort zone
 - Register for the events, via right swipe and Ignore with left swipe
 - Once the event is added, it will appear on the calendar
@@ -29,14 +31,14 @@ Bulletin helps you to "swipe" through your favorite events in the campus and giv
 - Android studio
 ## License
 
-Distributed under the [MPL 2.0] (https://www.mozilla.org/en-US/MPL/2.0/) License.
+Distributed under the [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/) License.
 
 ## Authors
 
-- [@shreyaparadkar](https://www.github.com/shreyaparadkar)
 - [@ashwinadiga01](https://www.github.com/ashwinadiga01)
 - [@nimit2801](https://www.github.com/nimit2801)
 - [@sakshamgorey](https://github.com/sakshamgorey)
+- [@shreyaparadkar](https://www.github.com/shreyaparadkar)
 
 
 ## Future updates
