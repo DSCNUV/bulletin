@@ -25,7 +25,7 @@ class CardStackAdapter(
         val spot = events[position]
         holder.name.text = spot.name
         holder.organizers.text = spot.organizers
-        holder.desc.text = "Organizers: " +spot.desc
+        holder.desc.text = spot.desc
         holder.date.text = "Date: "+spot.date
         Glide.with(holder.image)
             .load(spot.url)
